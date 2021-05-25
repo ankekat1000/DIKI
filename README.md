@@ -7,8 +7,9 @@ The App analyses text data using a so called _dictionary_ for incivility (which 
 - OUT: `data.csv`
 
 ```
+#requirements
+
 pip install streamlit
 pip install nltk
 pip install pandas
-
 ```
