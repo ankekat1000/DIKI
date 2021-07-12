@@ -1,6 +1,6 @@
 # DIKI Web App for Incivility Detection (German)
 
-Welcome! We are happy you want to use our **DIKI WEB APP** 💞 Click [here]("link") to start right away! 
+Welcome! We are happy you want to use our **DIKI WEB APP** 💞 Click [here]("https://diki-web-app.herokuapp.com") to start right away! 
 
 ### About
 
