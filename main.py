@@ -11,13 +11,12 @@ from nltk.tokenize import WhitespaceTokenizer
 # ----------------------------------- Functions ------------------------------------#
 
 def getDictionary(dictionary):
-    if dictionary == 'DIKI':
+    if dictionary == 'DIKI small':
         chosen_dictionary = pd.read_csv("./Dictionaries/dict_LIWC_test.txt", sep="\t")
-    elif dictionary == 'LIWC':
+    elif dictionary == 'DIKI large':
         chosen_dictionary = pd.read_csv("./Dictionaries/dict_LIWC_test.txt", sep="\t")
 
-    else:
-        chosen_dictionary = pd.read_csv("./Dictionaries/dict_LIWC_test.txt", sep="\t")
+
     return chosen_dictionary
 
 
@@ -26,30 +25,26 @@ def getDictionary(dictionary):
 
 def main():
     st.sidebar.header("About the DIKI App")
-    st.sidebar.markdown("A Simple Web App to use the Dictionary DIKI " \
-                    "Insert some information more about DIKI here")
+    st.sidebar.markdown("The DIKI Web App is a simple, web-based Tool to apply the Dictionary DIKI for Incivility Detection in German Online Discussions.")
+    st.sidebar.markdown(":hearts: Please read our [paper](https://github.com/ankekat1000/DIKI-Web-App/tree/main/Dictionaries) to get more information about DIKI and the matching algorithm.")
 
-    st.sidebar.markdown("[Download DIKI from GitHub]("")")
+    st.sidebar.markdown(":hearts: If you want to implement DIKI individually, you can [download DIKI from GitHub](https://github.com/ankekat1000/DIKI-Web-App/tree/main/Dictionaries)")
+    st.sidebar.markdown(":hearts: We are looking foward to your questions and comments! Please leave us a message on the [discussion section on GitHub](https://github.com/ankekat1000/DIKI-Web-App/).")
 
-    #st.sidebar.header("Get DIKI from ")
-
-    st.sidebar.info("Anke Stoll @ HHU Dusseldorf")
-    #st.sidebar.text("Maintained by ankekat1000")
-
-    st.sidebar.header("Step by Step")
-    st.sidebar.markdown("Insert Step by Step Manual here:")
+    st.sidebar.info("Maintained by Anke Stoll, Institute of Social Sciences @ Heinrich Heine University Düsseldorf, Germany")
     st.sidebar.text("Built with Streamlit")
-    st.sidebar.text("Maintained by ankekat1000")
+
+
 
 # ----------------------------------- Page ------------------------------------#
 
-    st.title("DIKI APP")
+    st.title("DIKI WEB APP")
     st.markdown("Welcome :hearts:")
-
     # ---------- Data Uplaod -------------#
     st.subheader("Upload your Data")
-    st.markdown("Klick on the button `Browse files` to upload a data file from your computer. Make sure, your data is comma seperated, e.g., a file in .csv-format. \
-    If you want to test the app, you can download an example data file of user comments `testdata_for_diki.csv` we provided for you [here](https://towardsdatascience.com/multi-class-text-classification-with-lstm-1590bee1bd17).")
+    st.markdown("Klick on the button `Browse files` below to upload a data file with user comments, Tweets, etc. from your computer. Make sure, your data is comma seperated, e.g., a file in .csv-format.")
+
+    #If you want to test the app, you can download an example data file of user comments `testdata_for_diki.csv` from the [DIKI GitHub repository](https://github.com/ankekat1000/DIKI-Web-App).")
     data = st.file_uploader("Must be comma seperated data (e.g. a .csv-file).", type=["csv", "txt"])
 
     if data is not None:
@@ -57,7 +52,7 @@ def main():
         df = pd.read_csv(data)
         #st.success("You selected {}".format(data))
         # ---------- Data Check -------------#
-        st.markdown("Klick on the button below to display some facts about the data you uploaded or quick jump to Step 2 by selecting the box.")
+        st.markdown("Klick on the button `Show Data Frame Infos` below to display some infos about the data you uploaded or quick jump to Step 2 by selecting the box `Continue the Analysis`.")
         if st.button("Show Data Frame Infos"):
 
             st.write("Your data frame contains", len(df), "rows.")
@@ -68,7 +63,7 @@ def main():
             pass
 
         # ---------- Select a Column -------------#
-        if st.checkbox("Continue the analysis with step 2"):
+        if st.checkbox("Continue the Analysis"):
             st.subheader("Step 2: Select a text column to analyze.")
             column_names= list(df.columns)
             st.markdown("Now select a column in your data frame you want to analyse. Make sure, it is a column that contains text only such as comment messages, review texts, or news articles.")
@@ -83,7 +78,7 @@ def main():
             if st.checkbox("Klick to next Step: Select a Dictionary"):
 
                 st.subheader("Step 3: Select a Dictionary")
-                dictionary = st.selectbox('select a dictionary', ["DIKI", "DIKI2", "LIWC"])
+                dictionary = st.selectbox('select a dictionary', ["DIKI small", "DIKI large"])
                 st.success("You selected {}".format(dictionary))
 
                 dic = getDictionary(dictionary)
@@ -138,19 +133,22 @@ def main():
 
                     df["Number_Matches"] = df[option].apply(lambda x: match_count_unigrams(x))
 
-                    no_matches = len(df[(df['Number_Matches']>0)])
-                    st.success("Number of machted rows: {}".format(no_matches))
-                    st.markdown("We added two columns to your data frame: `Matches` and `Number_Matches`")
-                    st.write("First 10 columns of your data:", df.head(10))
+                    st.markdown("Now, the entries of the Dikionary are matches with the texts from the column from your data file you selected. \
+                    For every row, you will receive the information how many and which words are matched. Therefore, two new columns will be added to your dataframe: *Matches* and *Number_Matches*." )
+                    if st.checkbox("Got it, show me results!"):
+                        no_matches = len(df[(df['Number_Matches']>0)])
+                        st.success("Number of machted rows: {}".format(no_matches))
+                        st.markdown("We added two columns to your data frame: `Matches` and `Number_Matches`")
+                        st.write("First 10 columns of your data:", df.head(10))
 
-                    if st.button('Save'):
-                        df.to_csv("saved_data.csv")
-                    elif st.button('Save only matched instances'):
-                        if no_matches >= 1:
+                        if st.button('Save'):
+                            df.to_csv("saved_data.csv")
+                        elif st.button('Save only matched instances'):
+                            if no_matches >= 1:
 
-                            df.to_csv("saved_data_matched_instances.csv")
-                        else:
-                            st.markdown("There are no matches to be saved in your data file :grimacing:")
+                                df.to_csv("saved_data_matched_instances.csv")
+                            else:
+                                st.markdown("There are no matches to be saved in your data file :grimacing:")
 
 
 if __name__ == '__main__':
