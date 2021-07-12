@@ -12,9 +12,9 @@ from nltk.tokenize import WhitespaceTokenizer
 
 def getDictionary(dictionary):
     if dictionary == 'DIKI small':
-        chosen_dictionary = pd.read_csv("./Dictionaries/dict_LIWC_test.txt", sep="\t")
+        chosen_dictionary = pd.read_csv("./Dictionaries/diki_small_low.txt", sep="\t")
     elif dictionary == 'DIKI large':
-        chosen_dictionary = pd.read_csv("./Dictionaries/dict_LIWC_test.txt", sep="\t")
+        chosen_dictionary = pd.read_csv("./Dictionaries/diki_small_low.txt", sep="\t")
 
 
     return chosen_dictionary
@@ -26,10 +26,11 @@ def getDictionary(dictionary):
 def main():
     st.sidebar.header("About the DIKI App")
     st.sidebar.markdown("The DIKI Web App is a simple, web-based Tool to apply the Dictionary DIKI for Incivility Detection in German Online Discussions.")
-    st.sidebar.markdown(":hearts: Please read our [paper](https://github.com/ankekat1000/DIKI-Web-App/tree/main/Dictionaries) to get more information about DIKI and the matching algorithm.")
+    st.sidebar.markdown(":green_heart: Please read our [paper](https://github.com/ankekat1000/DIKI-Web-App/tree/main/Dictionaries) to get more information about DIKI and the matching algorithm.")
+    #st.sidebar.info("Stoll, A., Ziegele, M., & Wilms, L. (2021): Developing an Incivility-Dictionary for German Online Discussions - A Semi-Automated Approach Combining Human and Artificial Knowledge")
 
-    st.sidebar.markdown(":hearts: If you want to implement DIKI individually, you can [download DIKI from GitHub](https://github.com/ankekat1000/DIKI-Web-App/tree/main/Dictionaries)")
-    st.sidebar.markdown(":hearts: We are looking foward to your questions and comments! Please leave us a message on the [discussion section on GitHub](https://github.com/ankekat1000/DIKI-Web-App/).")
+    st.sidebar.markdown(":blue_heart: If you want to implement DIKI individually, you can [download DIKI from GitHub](https://github.com/ankekat1000/DIKI-Web-App/tree/main/Dictionaries)")
+    st.sidebar.markdown(":purple_heart: We are looking foward to your questions and comments! Please leave us a message on the [discussion section on GitHub](https://github.com/ankekat1000/DIKI-Web-App/discussions/1).")
 
     st.sidebar.info("Maintained by Anke Stoll, Institute of Social Sciences @ Heinrich Heine University Düsseldorf, Germany")
     st.sidebar.text("Built with Streamlit")
@@ -146,7 +147,7 @@ def main():
                         elif st.button('Save only matched instances'):
                             if no_matches >= 1:
 
-                                df.to_csv("saved_data_matched_instances.csv")
+                                df.to_csv("saved_data_matched_instances.csv", index=None)
                             else:
                                 st.markdown("There are no matches to be saved in your data file :grimacing:")
 
