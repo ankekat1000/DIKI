@@ -8,5 +8,6 @@ The Python-based Webapp runs in your browser (we recommend Firefox) without inst
 
 ### Dictionaries
 
-For analyzing your data, we provide two word lists (dictionaries) for incivility in German-language online discussions. The app used the x-method to find entries of the dictionary in your data set. Data and key words will be transformed to lower case.
+For analyzing your data, we provide two word lists (dictionaries) for incivility in German-language online discussions. The app used the x-method to find entries of the dictionary in your uploaded data file. It will add two new columns to your data, one with the number of matches, and one with the matched words. Both your data and the key words will be transformed to lower case.
+
 
