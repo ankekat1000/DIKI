@@ -4,5 +4,9 @@ Welcome! We are happy you want to use our **DIKI WEB APP** 💞 Click [here](htt
 
 ### About
 
-- hosted by heroku
-- 
+The Python-based Webapp runs in your browser (we recommend Firefox) without installing any software or packages on any operating system. The app is hosted by [Heroku](https://www.heroku.com/). 
+
+### Dictionaries
+
+For analyzing your data, we provide two word lists (dictionaries) for incivility in German-language online discussions. The app used the x-method to find entries of the dictionary in your data set. Data and key words will be transformed to lower case.
+
