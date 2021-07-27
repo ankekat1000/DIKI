@@ -4,7 +4,7 @@
 
 import streamlit as st
 import pandas as pd
-from nltk.tokenize import WhitespaceTokenizer
+#from nltk.tokenize import WhitespaceTokenizer
 
 
 
@@ -16,7 +16,7 @@ def getDictionary(dictionary):
     elif dictionary == 'DIKI large':
         chosen_dictionary = pd.read_csv("./Dictionaries/diki_small_low.txt", sep="\t")
 
-
+    chosen_dictionary = list(chosen_dictionary.iloc[:, 0])
     return chosen_dictionary
 
 
@@ -48,20 +48,23 @@ def main():
     data = st.file_uploader("Must be comma seperated data (e.g. a .csv-file).", type=["csv", "txt"])
 
     if data is not None:
-        data.seek(0)
-        df = pd.read_csv(data)
-        #st.success("You selected {}".format(data))
-        # ---------- Data Check -------------#
-        st.markdown("Klick on the button `Show Data Frame Infos` below to display some infos about the data you uploaded or quick jump to Step 2 by selecting the box `Continue the Analysis`.")
-        if st.button("Show Data Frame Infos"):
+        try:
+            data.seek(0)
+            df = pd.read_csv(data)
+            #st.success("You selected {}".format(data))
+            # ---------- Data Check -------------#
+            st.markdown("Klick on the button `Show Data Frame Infos` below to display some infos about the data you uploaded or quick jump to Step 2 by selecting the box `Continue the Analysis`.")
+            if st.button("Show Data Frame Infos"):
 
-            st.write("Your data frame contains", len(df), "rows.")
-            st.write("And", len(df.columns), "columns.")
-            st.write("These are the first 10 rows of your data frame", df.head(10))
+                st.write("Your data frame contains", len(df), "rows.")
+                st.write("And", len(df.columns), "columns.")
+                st.write("These are the first 10 rows of your data frame", df.head(10))
+            else:
+                pass
+        except pd.errors.ParserError:
+            st.error("Ups, it looks like your file does not fit the format specification. Recheck if it's comma-separated and endcoded in utf-8.")
 
 
-        else:
-            pass
 
         # ---------- Select a Column -------------#
         if st.checkbox("Continue the Analysis"):
@@ -85,7 +88,7 @@ def main():
                 dic = getDictionary(dictionary)
                 if st.button("Show Dictionary Infos"):
                     st.write("The dictionary contains", len(dic), "entries.")
-                    st.write("These are the first 10 entries of the dictionary", dic.head(10))
+                    st.write("These are the first 10 entries of the dictionary", dic[:11])
                     st.markdown("If you want to see all entries of the dictionary, visit [DIKI on Github](https://github.com/ankekat1000/DIKI-Web-App/tree/main/Dictionaries) ")
 
                 else:
@@ -96,20 +99,33 @@ def main():
                     st.subheader("Step 4: Analysis")
 
                     def match_unigrams_dici(X):
+                        match = []
                         X = str(X)  # vorsichtshalber
 
                         X = str.lower(X)
 
-                        match = []
+
 
                         for i in dic:
                             if i in X:
                                 match.append(i)
+                                print(i)
 
                         return (match)
 
 
                     df["Matches"]=df[option].apply(lambda x: match_unigrams_dici(x))
+
+
+
+                    # Returns number of matches (integer)
+                    def match_count_unigrams(X):
+
+                            X = len(X)
+
+                            return (X)
+
+                    df["Number_Matches"] = df["Matches"].apply(lambda x: match_count_unigrams(x))
 
                     def matches_to_sting(X):
 
@@ -118,16 +134,6 @@ def main():
                         return (X)
 
                     df["Matches"] = df["Matches"].apply(lambda x: matches_to_sting(x))
-
-                    # Returns number of matches (integer)
-
-                    def match_count_unigrams(X):
-
-                            X = len(X)
-
-                            return (X)
-
-                    df["Number_Matches"] = df["Matches"].apply(lambda x: match_count_unigrams(x))
 
                     st.markdown("Now, the entries of the Dikionary are matches with the texts from the column from your data file you selected. \
                     For every row, you will receive the information how many and which words are matched. Therefore, two new columns will be added to your dataframe: *Matches* and *Number_Matches*." )
