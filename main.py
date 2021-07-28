@@ -4,7 +4,13 @@
 
 import streamlit as st
 import pandas as pd
+import base64
+import time
+#timestr = time.strftime("%Y%m%d-%H%M%S")
+timestr = time.strftime("%Y%m%d")
+
 #from nltk.tokenize import WhitespaceTokenizer
+
 
 
 
@@ -19,7 +25,13 @@ def getDictionary(dictionary):
     chosen_dictionary = list(chosen_dictionary.iloc[:, 0])
     return chosen_dictionary
 
-
+def csv_downloader(data):
+	csvfile = data.to_csv()
+	b64 = base64.b64encode(csvfile.encode()).decode()
+	new_filename = "your_data_with_DIKI_results_{}.csv".format(timestr)
+	st.markdown("#### Download File ###")
+	href = f'<a href="data:file/csv;base64,{b64}" download="{new_filename}">Click Here!!</a>'
+	st.markdown(href,unsafe_allow_html=True)
 
 # ----------------------------------- Sidebar ------------------------------------#
 
@@ -144,12 +156,10 @@ def main():
                         st.write("First 10 columns of your data:", df.head(10))
 
                         if st.button('Save'):
-                            df.to_csv("saved_data.csv")
-                        elif st.button('Save only matched instances'):
                             if no_matches >= 1:
-
-                                df.to_csv("saved_data_matched_instances.csv", index=None)
-                            else:
+                                csv_downloader(df)
+                            #df.to_csv("saved_data.csv")
+                            elif no_matches <= 1:
                                 st.markdown("There are no matches to be saved in your data file :grimacing:")
 
 
