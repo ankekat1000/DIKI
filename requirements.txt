@@ -1,5 +1,5 @@
 streamlit==0.82.0
 pandas==1.3.0
 #nltk==3.6.2
-base64
-time
+base64==
+time==3.9.6
