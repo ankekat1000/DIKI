@@ -59,7 +59,7 @@ def main():
     # ---------- Data Uplaod -------------#
     st.subheader("Upload your Data")
     st.markdown("Klick on the button `Browse files` below to upload a data file with user comments, Tweets, etc. from your computer. "\
-                "Make sure, you upload either a comma-separated file in **.csv or .txt** format, or an excel file in **xlsx** format. Your file should be encoded in **UTF-8**.")
+                "Make sure, you upload either a comma-separated file in *.csv* or *.txt* format, or an excel file in *xlsx* format. Your file should be encoded in *UTF-8*.")
 
     #If you want to test the app, you can download an example data file of user comments `testdata_for_diki.csv` from the [DIKI GitHub repository](https://github.com/ankekat1000/DIKI-Web-App).")
     data = st.file_uploader("If you upload a .csv or .txt-file, make sure it is actually comma-separated.", type=["csv", "txt", "xlsx"])
