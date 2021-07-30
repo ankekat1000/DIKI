@@ -6,6 +6,10 @@ import streamlit as st
 import pandas as pd
 import base64
 import time
+import os
+import xlrd
+import openpyxl
+
 #timestr = time.strftime("%Y%m%d-%H%M%S")
 timestr = time.strftime("%Y%m%d")
 
@@ -36,7 +40,7 @@ def csv_downloader(data):
 # ----------------------------------- Sidebar ------------------------------------#
 
 def main():
-    st.sidebar.header("About the DIKI App")
+    st.sidebar.header("About")
     st.sidebar.markdown("The DIKI Web App is a simple, web-based Tool to apply the Dictionary DIKI for Incivility Detection in German Online Discussions.")
     st.sidebar.markdown(":green_heart: For further information, please visit [DIKI on Github](https://github.com/ankekat1000/DIKI-Web-App/).")
 
@@ -44,7 +48,7 @@ def main():
     st.sidebar.markdown(":purple_heart: We are looking foward to your questions and comments! Please leave us a message on the [discussion section on GitHub](https://github.com/ankekat1000/DIKI-Web-App/discussions/1).")
 
     st.sidebar.info("Maintained by Anke Stoll, Institute of Social Sciences @ Heinrich Heine University Düsseldorf, Germany")
-    st.sidebar.text("Built with Streamlit")
+    #st.sidebar.text("Built with Streamlit")
 
 
 
@@ -54,18 +58,35 @@ def main():
     st.markdown("Welcome :wave:")
     # ---------- Data Uplaod -------------#
     st.subheader("Upload your Data")
-    st.markdown("Klick on the button `Browse files` below to upload a data file with user comments, Tweets, etc. from your computer. Make sure, your data is comma seperated, e.g., a file in .csv-format.")
+    st.markdown("Klick on the button `Browse files` below to upload a data file with user comments, Tweets, etc. from your computer. "\
+                "Make sure, you upload either a comma-separated file in **.csv or .txt** format, or an excel file in **xlsx** format. Your file should be encoded in **UTF-8**.")
 
     #If you want to test the app, you can download an example data file of user comments `testdata_for_diki.csv` from the [DIKI GitHub repository](https://github.com/ankekat1000/DIKI-Web-App).")
-    data = st.file_uploader("Must be comma seperated data (e.g. a .csv-file).", type=["csv", "txt"])
+    data = st.file_uploader("If you upload a .csv or .txt-file, make sure it is actually comma-separated.", type=["csv", "txt", "xlsx"])
 
     if data is not None:
         try:
             data.seek(0)
-            df = pd.read_csv(data)
+
+
+            ext = os.path.splitext(data.name)[1]
+            print(ext)
+
+            if ext == '.csv':
+                df = pd.read_csv(data)
+            elif ext == '.xlsx':
+                df = pd.read_excel(data, engine='openpyxl')
+            elif ext == '.txt':
+                df = pd.read_csv(data)
+
+            #df = pd.read_csv(data)
             #st.success("You selected {}".format(data))
             # ---------- Data Check -------------#
             st.markdown("Klick on the button `Show Data Frame Infos` below to display some infos about the data you uploaded or quick jump to Step 2 by selecting the box `Continue the Analysis`.")
+
+
+
+
             if st.button("Show Data Frame Infos"):
 
                 st.write("Your data frame contains", len(df), "rows.")
