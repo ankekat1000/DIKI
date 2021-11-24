@@ -22,9 +22,9 @@ timestr = time.strftime("%Y%m%d")
 
 def getDictionary(dictionary):
     if dictionary == 'DIKI small':
-        chosen_dictionary = pd.read_csv("./Dictionaries/diki_small_low.txt", sep="\t")
+        chosen_dictionary = pd.read_csv("./Dictionaries/DIKI_small.csv", sep="\t")
     elif dictionary == 'DIKI large':
-        chosen_dictionary = pd.read_csv("./Dictionaries/diki_small_low.txt", sep="\t")
+        chosen_dictionary = pd.read_csv("./Dictionaries/DIKI_large.csv", sep="\t")
 
     chosen_dictionary = list(chosen_dictionary.iloc[:, 0])
     return chosen_dictionary
