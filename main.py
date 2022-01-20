@@ -16,8 +16,6 @@ timestr = time.strftime("%Y%m%d")
 #from nltk.tokenize import WhitespaceTokenizer
 
 
-
-
 # ----------------------------------- Functions ------------------------------------#
 
 def getDictionary(dictionary):
@@ -42,14 +40,13 @@ def csv_downloader(data):
 def main():
     st.sidebar.header("About")
     st.sidebar.markdown("The DIKI Web App is a simple, web-based Tool to apply the Dictionary DIKI for Incivility Detection in German Online Discussions.")
-    st.sidebar.markdown(":green_heart: For further information, please visit [DIKI on Github](https://github.com/ankekat1000/DIKI-Web-App/).")
+    st.sidebar.markdown(":green_heart: For further information, please visit [].")
 
-    st.sidebar.markdown(":blue_heart: If you want to implement DIKI individually, you can [download DIKI from GitHub](https://github.com/ankekat1000/DIKI-Web-App/tree/main/Dictionaries)")
-    st.sidebar.markdown(":purple_heart: We are looking foward to your questions and comments! Please leave us a message on the [discussion section on GitHub](https://github.com/ankekat1000/DIKI-Web-App/discussions/1).")
+    st.sidebar.markdown(":blue_heart: If you want to implement DIKI individually, you can download DIKI from GitHub []")
+    st.sidebar.markdown(":purple_heart: We are looking foward to your questions and comments! Please leave us a message on the discussion section on GitHub [].")
 
-    st.sidebar.info("Maintained by Anke Stoll, Institute of Social Sciences @ Heinrich Heine University Düsseldorf, Germany")
+    st.sidebar.info("Author Affilations will be inserted here")
     #st.sidebar.text("Built with Streamlit")
-
 
 
 # ----------------------------------- Page ------------------------------------#
