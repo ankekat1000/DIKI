@@ -13,7 +13,7 @@ from PIL import Image
 
 # timestr = time.strftime("%Y%m%d-%H%M%S")
 timestr = time.strftime("%Y%m%d")
-ima = Image.open("flaticon_hearts.png")
+ima = Image.open("./flaticon_hearts.png")
 
 st.set_page_config(page_title='DIKI App', page_icon=ima)
 
