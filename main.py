@@ -62,7 +62,7 @@ def main():
     data = st.file_uploader("If you upload a .csv or .txt-file, make sure it is actually comma-separated.", type=["csv", "txt", "xlsx"])
 
     if data is not None:
-        try:
+	try:
             data.seek(0)
 
 
@@ -75,6 +75,7 @@ def main():
                 df = pd.read_excel(data, engine='openpyxl')
             elif ext == '.txt':
                 df = pd.read_csv(data)
+		
 	except UnicodeDecodeError as e: 
 	    st.error("Ups, not something went wrong with the format of your file. Make sure, it is comma-separated. If you saved an excel file as .csv, this is usually not the case.")
 	
