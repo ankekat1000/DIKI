@@ -106,82 +106,85 @@ def main():
 
 		# ---------- Select a Column -------------#
 		if st.checkbox("Continue the Analysis"):
-			st.subheader("Step 2: Select a text column to analyze.")
-			column_names = list(df.columns)
-			st.markdown(
-				"Now select a column in your data frame you want to analyse. Make sure, it is a column that contains text only such as comment messages, review texts, or news articles.")
-			option = st.selectbox('It has to be a text column.', column_names)
-			st.success("You selected {}".format(option))
-			st.write(df[option].head())
+			try:
+				st.subheader("Step 2: Select a text column to analyze.")
+				column_names = list(df.columns)
+				st.markdown(
+					"Now select a column in your data frame you want to analyse. Make sure, it is a column that contains text only such as comment messages, review texts, or news articles.")
+				option = st.selectbox('It has to be a text column.', column_names)
+				st.success("You selected {}".format(option))
+				st.write(df[option].head())
+				
+			except UnboundLocalError as e:
+				st.error("Please chose a functional data file.")
 
-			# ---------- Select a Dictionary -------------#
+				# ---------- Select a Dictionary -------------#
 
-			if st.checkbox("Klick to next Step: Select a Dictionary"):
+				if st.checkbox("Klick to next Step: Select a Dictionary"):
 
-				st.subheader("Step 3: Select a Dictionary")
-				dictionary = st.selectbox('select a dictionary', ["DIKI small", "DIKI large"])
-				st.success("You selected {}".format(dictionary))
+					st.subheader("Step 3: Select a Dictionary")
+					dictionary = st.selectbox('select a dictionary', ["DIKI small", "DIKI large"])
+					st.success("You selected {}".format(dictionary))
 
-				dic = getDictionary(dictionary)
-				if st.button("Show Dictionary Infos"):
-					st.write("The dictionary contains", len(dic), "entries.")
-					st.write("These are the first 10 entries of the dictionary", dic[:11])
-					st.markdown(
-						"If you want to see all entries of the dictionary, visit [DIKI on Github](https://github.com/ankekat1000/DIKI-Web-App/tree/main/Dictionaries) ")
+					dic = getDictionary(dictionary)
+					if st.button("Show Dictionary Infos"):
+						st.write("The dictionary contains", len(dic), "entries.")
+						st.write("These are the first 10 entries of the dictionary", dic[:11])
+						st.markdown("If you want to see all entries of the dictionary, visit [DIKI on Github](https://github.com/ankekat1000/DIKI-Web-App/tree/main/Dictionaries) ")
 
-				else:
-					pass
+					else:
+						pass
 
-				# ---------- Analysis -------------#
-				if st.checkbox("Klick to next Step: Analyze!"):
-					st.subheader("Step 4: Analysis")
+					# ---------- Analysis -------------#
+					if st.checkbox("Klick to next Step: Analyze!"):
+						st.subheader("Step 4: Analysis")
 
-					def match_unigrams_dici(X):
-						match = []
-						X = str(X)  # vorsichtshalber
+						def match_unigrams_dici(X):
+							match = []
+							X = str(X)  # vorsichtshalber
 
-						X = str.lower(X)
+							X = str.lower(X)
 
-						for i in dic:
-							if i in X:
-								match.append(i)
-							# print(i)
+							for i in dic:
+								if i in X:
+									match.append(i)
+								# print(i)
 
-						return (match)
+							return (match)
 
-					df["Matches"] = df[option].apply(lambda x: match_unigrams_dici(x))
+						df["Matches"] = df[option].apply(lambda x: match_unigrams_dici(x))
 
-					# Returns number of matches (integer)
-					def match_count_unigrams(X):
+						# Returns number of matches (integer)
+						def match_count_unigrams(X):
 
-						X = len(X)
+							X = len(X)
 
-						return (X)
+							return (X)
 
-					df["Number_Matches"] = df["Matches"].apply(lambda x: match_count_unigrams(x))
+						df["Number_Matches"] = df["Matches"].apply(lambda x: match_count_unigrams(x))
 
-					def matches_to_sting(X):
+						def matches_to_sting(X):
 
-						X = ", ".join(X)
+							X = ", ".join(X)
 
-						return (X)
+							return (X)
 
-					df["Matches"] = df["Matches"].apply(lambda x: matches_to_sting(x))
+						df["Matches"] = df["Matches"].apply(lambda x: matches_to_sting(x))
 
-					st.markdown("Now, the entries of the Dikionary are matches with the texts from the column from your data file you selected. \
-                    For every row, you will receive the information how many and which words are matched. Therefore, two new columns will be added to your dataframe: *Matches* and *Number_Matches*.")
-					if st.checkbox("Got it, show me results!"):
-						no_matches = len(df[(df['Number_Matches'] > 0)])
-						st.success("Number of machted rows: {}".format(no_matches))
-						st.markdown("We added two columns to your data frame: `Matches` and `Number_Matches`")
-						st.write("First 10 columns of your data:", df.head(10))
+						st.markdown("Now, the entries of the Dikionary are matches with the texts from the column from your data file you selected. \
+			    For every row, you will receive the information how many and which words are matched. Therefore, two new columns will be added to your dataframe: *Matches* and *Number_Matches*.")
+						if st.checkbox("Got it, show me results!"):
+							no_matches = len(df[(df['Number_Matches'] > 0)])
+							st.success("Number of machted rows: {}".format(no_matches))
+							st.markdown("We added two columns to your data frame: `Matches` and `Number_Matches`")
+							st.write("First 10 columns of your data:", df.head(10))
 
-						if st.button('Save'):
-							if no_matches >= 1:
-								csv_downloader(df)
-							# df.to_csv("saved_data.csv")
-							elif no_matches <= 1:
-								st.markdown("There are no matches to be saved in your data file :grimacing:")
+							if st.button('Save'):
+								if no_matches >= 1:
+									csv_downloader(df)
+								# df.to_csv("saved_data.csv")
+								elif no_matches <= 1:
+									st.markdown("There are no matches to be saved in your data file :grimacing:")
 
 
 if __name__ == '__main__':
