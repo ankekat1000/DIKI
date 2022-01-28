@@ -1,4 +1,3 @@
-# ankekat1000
 # App for Applying DIKI
 # ----------------------------------- imports ------------------------------------#
 
@@ -17,6 +16,27 @@ st.set_page_config(page_title='DIKI App')
 
 
 # from nltk.tokenize import WhitespaceTokenizer
+
+# ----------------------------------- Functions ------------------------------------#
+
+def getDictionary(dictionary):
+	if dictionary == 'DIKI small':
+		chosen_dictionary = pd.read_csv("./Dictionaries/DIKI_small.csv", sep="\t")
+	elif dictionary == 'DIKI large':
+		chosen_dictionary = pd.read_csv("./Dictionaries/DIKI_large.csv", sep="\t")
+
+	chosen_dictionary = list(chosen_dictionary.iloc[:, 0])
+	return chosen_dictionary
+
+
+def csv_downloader(data):
+	csvfile = data.to_csv()
+	b64 = base64.b64encode(csvfile.encode()).decode()
+	new_filename = "your_data_with_DIKI_results_{}.csv".format(timestr)
+	st.markdown("#### Download File ###")
+	href = f'<a href="data:file/csv;base64,{b64}" download="{new_filename}">Click Here!!</a>'
+	st.markdown(href, unsafe_allow_html=True)
+
 
 # ----------------------------------- Functions ------------------------------------#
 
