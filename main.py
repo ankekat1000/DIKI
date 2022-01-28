@@ -192,8 +192,8 @@ def main():
 							if matches >= 1:
 								csv_downloader(df)
 								st.success("Your file has been downloaded successfully.")
-								if st.button("Yeah, good job!"):
-									st.balloons()
+								#if st.button("Yeah, good job!"):
+								#	st.balloons()
 
 							# df.to_csv("saved_data.csv")
 							elif matches <= 1:
