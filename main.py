@@ -50,7 +50,7 @@ def main():
 
 
 # ----------------------------------- Page ------------------------------------#
-    st.beta_set_page_config(page_title='DIKI App')
+    st.set_page_config(page_title='DIKI App')
 
     st.title("DIKI WEB APP (beta)")
     st.markdown("Welcome :wave:")
