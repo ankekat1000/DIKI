@@ -14,7 +14,7 @@ import openpyxl
 timestr = time.strftime("%Y%m%d")
 
 #from nltk.tokenize import WhitespaceTokenizer
-
+st.set_page_config(page_title='DIKI App')
 
 # ----------------------------------- Functions ------------------------------------#
 
@@ -50,7 +50,7 @@ def main():
 
 
 # ----------------------------------- Page ------------------------------------#
-    st.set_page_config(page_title='DIKI App')
+    
 
     st.title("DIKI WEB APP (beta)")
     st.markdown("Welcome :wave:")
