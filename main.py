@@ -13,7 +13,7 @@ import openpyxl
 # timestr = time.strftime("%Y%m%d-%H%M%S")
 timestr = time.strftime("%Y%m%d")
 
-st.set_page_config(page_title='DIKI App')
+st.set_page_config(page_title='DIKI App', page_icon="flaticon_hearts.png")
 
 
 # from nltk.tokenize import WhitespaceTokenizer
