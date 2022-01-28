@@ -82,10 +82,7 @@ def main():
 			elif ext == '.txt':
 				df = pd.read_csv(data)
 
-		except UnicodeDecodeError as e:
-			st.error(
-				"Ups, not something went wrong with the format of your file. Make sure, it is comma-separated. If you saved an excel file as .csv, this is usually not the case.")
-
+		
 			# df = pd.read_csv(data)
 			# st.success("You selected {}".format(data))
 			# ---------- Data Check -------------#
@@ -99,9 +96,13 @@ def main():
 				st.write("These are the first 10 rows of your data frame", df.head(10))
 			else:
 				pass
+			
+		except UnicodeDecodeError as e:
+			st.error("Ups, something went wrong with the encoding of your file. Make sure, it is encoded in utf-8.")
+
+		
 		except pd.errors.ParserError:
-			st.error(
-				"Ups, it looks like your file does not fit the format specification. Recheck if it's comma-separated and endcoded in utf-8.")
+			st.error("Ups, it looks like your file does not fit the format specification. Recheck if it's comma-separated and endcoded in utf-8.")
 
 		# ---------- Select a Column -------------#
 		if st.checkbox("Continue the Analysis"):
