@@ -9,6 +9,7 @@ import time
 import os
 import xlrd
 import openpyxl
+from PIL import Image
 
 # timestr = time.strftime("%Y%m%d-%H%M%S")
 timestr = time.strftime("%Y%m%d")
