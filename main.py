@@ -51,7 +51,6 @@ def main():
 # ----------------------------------- Page ------------------------------------#
     st.set_page_config(page_title='DIKI App')
 
-
     st.title("DIKI WEB APP (beta)")
     st.markdown("Welcome :wave:")
     # ---------- Data Uplaod -------------#
@@ -76,7 +75,9 @@ def main():
                 df = pd.read_excel(data, engine='openpyxl')
             elif ext == '.txt':
                 df = pd.read_csv(data)
-
+	 except UnicodeDecodeError as e: 
+	    st.error("Ups, not something went wrong with the format of your file. Make sure, it is comma-separated. If you saved an excel file as .csv, this is usually not the case.")
+	
             #df = pd.read_csv(data)
             #st.success("You selected {}".format(data))
             # ---------- Data Check -------------#
