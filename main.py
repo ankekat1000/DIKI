@@ -63,18 +63,13 @@ def main():
 
 	# ----------------------------------- Sidebar ------------------------------------#
 	st.sidebar.header("About")
-	st.sidebar.markdown(
-		"The DIKI Web App is a simple, web-based Tool to apply the Dictionary DIKI for Incivility Detection in German Online Discussions.")
-	st.sidebar.markdown(
-		":green_heart: For further information, please visit [DIKI on Github](https://github.com/ankekat1000/DIKI-Web-App/).")
+	st.sidebar.markdown("The DIKI Web App is a simple, web-based Tool to apply the Dictionary DIKI for Incivility Detection in German Online Discussions.")
+	st.sidebar.markdown(":green_heart: For further information, please visit DIKI on Github **Link removed for review**.")
 
-	st.sidebar.markdown(
-		":blue_heart: If you want to implement DIKI individually, you can [download DIKI from GitHub](https://github.com/ankekat1000/DIKI-Web-App/tree/main/Dictionaries)")
-	st.sidebar.markdown(
-		":purple_heart: We are looking foward to your questions and comments! Please leave us a message on the [discussion section on GitHub](https://github.com/ankekat1000/DIKI-Web-App/discussions/1).")
+	st.sidebar.markdown(":blue_heart: If you want to implement DIKI individually, you can download DIKI from GitHub **Link removed for review**")
+	st.sidebar.markdown(":purple_heart: We are looking foward to your questions and comments! Please leave us a message on the discussion section on GitHub **Link removed for review**.")
 
-	st.sidebar.info(
-		"Maintained by Anke Stoll, Institute of Social Sciences @ Heinrich Heine University Düsseldorf, Germany")
+	st.sidebar.info("Maintained by ** Info removed for review**")
 	# st.sidebar.text("Built with Streamlit")
 
 	# ----------------------------------- Page ------------------------------------#
@@ -107,8 +102,7 @@ def main():
 			# df = pd.read_csv(data)
 			# st.success("You selected {}".format(data))
 			# ---------- Data Check -------------#
-			st.markdown(
-				"Klick on the button `Show Data Frame Infos` below to display some infos about the data you uploaded or quick jump to Step 2 by selecting the box `Continue the Analysis`.")
+			st.markdown("Klick on the button `Show Data Frame Infos` below to display some infos about the data you uploaded or quick jump to Step 2 by selecting the box `Continue the Analysis`.")
 
 			if st.button("Show Data Frame Infos"):
 
@@ -119,21 +113,18 @@ def main():
 				pass
 
 		except UnicodeDecodeError as e:
-			st.error(
-				"Ups, something went wrong with the encoding of your file. Make sure, it is encoded in utf-8. Tipp: Do not save .csv-files using Excel. Just save as .xlsx-file.")
+			st.error("Ups, something went wrong with the encoding of your file. Make sure, it is encoded in utf-8. Tipp: Do not save .csv-files using Excel. Just save as .xlsx-file.")
 			return None
 
 		except pd.errors.ParserError:
-			st.error(
-				"Ups, it looks like your file does not fit the format specification. Recheck if it's comma-separated. Tipp: Do not save .csv-files using Excel. Just save as .xlsx-file.")
+			st.error("Ups, it looks like your file does not fit the format specification. Recheck if it's comma-separated. Tipp: Do not save .csv-files using Excel. Just save as .xlsx-file.")
 			return None
 		# ---------- Select a Column -------------#
 		if st.checkbox("Continue the Analysis"):
 			try:
 				st.subheader("Step 2: Select a text column to analyze.")
 				column_names = list(df.columns)
-				st.markdown(
-					"Now select a column in your data frame you want to analyse. Make sure, it is a column that contains text only such as comment messages, review texts, or news articles.")
+				st.markdown("Now select a column in your data frame you want to analyse. Make sure, it is a column that contains text only such as comment messages, review texts, or news articles.")
 				option = st.selectbox('It has to be a text column.', column_names)
 				st.success("You selected {}".format(option))
 				st.write(df[option].head())
@@ -144,18 +135,22 @@ def main():
 			# ---------- Select a Dictionary -------------#
 
 			if st.button("Show Column Facts"):
+				try:
 
-				st.write("The column selected contains", len(df), "cells and", len(df[option].unique()),
-				         "unique cells (cells with different content.)")
-				st.write(len(df[option]) - df[option].count(), "cells in this row are empty.")
-				df_temp = df[option].dropna()
 
-				st.write("The average document length is", round(df_temp.apply(len).mean(), 1),
-				         ". The longest document contains", df_temp.apply(len).max(), "characters. The shortest",
-				         df_temp.apply(len).min(), "characters.")
-				# st.write(df_temp.head().apply(len))
-				df_temp["Text Length"] = df_temp.apply(len)
-				st.bar_chart(df_temp["Text Length"])
+					st.write("The column selected contains", len(df), "cells and", len(df[option].unique()),
+					         "unique cells (cells with different content.)")
+					st.write(len(df[option]) - df[option].count(), "cells in this row are empty.")
+					df_temp = df[option].dropna()
+
+					st.write("The average document length is", round(df_temp.apply(len).mean(), 1),
+					         ". The longest document contains", df_temp.apply(len).max(), "characters. The shortest",
+					         df_temp.apply(len).min(), "characters.")
+					# st.write(df_temp.head().apply(len))
+					df_temp["Text Length"] = df_temp.apply(len)
+					st.bar_chart(df_temp["Text Length"])
+				except:
+					st.error("Please use a column of strings.")
 
 			else:
 				pass
@@ -170,8 +165,7 @@ def main():
 				if st.button("Show Dictionary Infos"):
 					st.write("The dictionary contains", len(dic), "entries.")
 					st.write("These are the first 10 entries of the dictionary", dic[:11])
-					st.markdown(
-						"If you want to see all entries of the dictionary, visit [DIKI on Github](https://github.com/unknowndeveloper42/DIKI-Source-Code-and-Web-App)")
+					st.markdown("If you want to see all entries of the dictionary, visit [DIKI on Github](https://github.com/unknowndeveloper42/DIKI-Source-Code-and-Web-App)")
 
 				else:
 					pass
