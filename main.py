@@ -150,7 +150,7 @@ def main():
 					df_temp["Text Length"] = df_temp.apply(len)
 					st.bar_chart(df_temp["Text Length"])
 				except:
-					st.error("Please use a column of strings.")
+					st.error("Please chose a column of strings.")
 
 			else:
 				pass
