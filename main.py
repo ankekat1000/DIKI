@@ -1,4 +1,6 @@
 # App for Applying DIKI
+# Author removed for blind review
+
 # ----------------------------------- imports ------------------------------------#
 
 import streamlit as st
