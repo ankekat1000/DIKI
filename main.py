@@ -81,7 +81,7 @@ def main():
 	# ---------- Data Uplaod -------------#
 	st.subheader("Upload your Data")
 	st.markdown("Klick on the button `Browse files` below to upload a data file with user comments, Tweets, etc. from your computer. " \
-		"Make sure, you upload either a comma-separated file in *.csv* or *.txt* format, or an excel file in *xlsx* format. Your file should be encoded in *UTF-8*.")
+		"Make sure, you upload either a comma-separated file in *.csv* or *.txt* format, or an excel file in *.xlsx* format. Your file should be encoded in *UTF-8*.")
 
 
 	data = st.file_uploader("If you upload a .csv or .txt-file, make sure it is actually comma-separated.",
