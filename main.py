@@ -225,7 +225,7 @@ def main():
 						if st.button('Save as .csv'):
 							if matches >= 1:
 								csv_downloader(df)
-								st.success("Your file has been downloaded successfully.")
+								st.success("Your file has been downloaded successfully. Click on the Link above to save and open your file.")
 							# if st.button("Yeah, good job!"):
 							#	st.balloons()
 
