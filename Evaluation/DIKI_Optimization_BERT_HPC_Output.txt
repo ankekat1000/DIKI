@@ -1,0 +1,71 @@
+We use Tensorflow version: 2.4.0
+We use Torch version: 1.10.2+cu102
+Found GPU at: /device:GPU:0
+There are 1 GPU(s) available.
+We will use the GPU: NVIDIA GeForce GTX 1080 Ti
+max. length tokens: 256
+batch size: 16
+epochs: 4
+
+======== Epoch 1 / 4 ========
+Training...
+  Batch    40  of    203.    Elapsed: 0:00:15.
+  Batch    80  of    203.    Elapsed: 0:00:30.
+  Batch   120  of    203.    Elapsed: 0:00:45.
+  Batch   160  of    203.    Elapsed: 0:01:00.
+  Batch   200  of    203.    Elapsed: 0:01:15.
+
+  Average training loss: 0.59
+  Training epoch took: 0:01:16
+
+======== Epoch 2 / 4 ========
+Training...
+  Batch    40  of    203.    Elapsed: 0:00:15.
+  Batch    80  of    203.    Elapsed: 0:00:30.
+  Batch   120  of    203.    Elapsed: 0:00:46.
+  Batch   160  of    203.    Elapsed: 0:01:01.
+  Batch   200  of    203.    Elapsed: 0:01:16.
+
+  Average training loss: 0.41
+  Training epoch took: 0:01:18
+
+======== Epoch 3 / 4 ========
+Training...
+  Batch    40  of    203.    Elapsed: 0:00:15.
+  Batch    80  of    203.    Elapsed: 0:00:31.
+  Batch   120  of    203.    Elapsed: 0:00:46.
+  Batch   160  of    203.    Elapsed: 0:01:02.
+  Batch   200  of    203.    Elapsed: 0:01:17.
+
+  Average training loss: 0.21
+  Training epoch took: 0:01:18
+
+======== Epoch 4 / 4 ========
+Training...
+  Batch    40  of    203.    Elapsed: 0:00:15.
+  Batch    80  of    203.    Elapsed: 0:00:31.
+  Batch   120  of    203.    Elapsed: 0:00:46.
+  Batch   160  of    203.    Elapsed: 0:01:02.
+  Batch   200  of    203.    Elapsed: 0:01:17.
+
+  Average training loss: 0.10
+  Training epoch took: 0:01:18
+batch size test set: 16
+Predicting labels for 944 test comments...
+DONE.
+Positive samples: 350 of 944 (37.08%)
+Calculating macro F1 score for each batch...
+f1: 0.648
+Calculating Recall score for each batch...
+recall: 0.471
+Calculating Precision score for each batch...
+Precision: 0.602
+             precision    recall  f1-score   support
+
+          0       0.72      0.82      0.77       594
+          1       0.60      0.47      0.53       350
+
+avg / total       0.68      0.69      0.68       944
+
+[[485 109]
+ [185 165]]
