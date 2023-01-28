@@ -52,9 +52,8 @@ def main():
 	st.sidebar.markdown(":blue_heart: If you want to implement DIKI individually, you can download [DIKI from Github](https://github.com/ankekat1000/DIKI/tree/main/Dictionaries)")
 	st.sidebar.markdown(":purple_heart: We are looking foward to your questions and comments! Please post a message to the [Github discussion](https://github.com/ankekat1000/DIKI/discussions), if you have questions.")
 
-	st.sidebar.info("Maintained by [Anke Stoll](ankestoll.com)")
-	st.sidebar.text("Maintained by [Anke Stoll](ankestoll.com)")
-
+	st.sidebar.info("Maintained by [Anke Stoll](https://ankestoll.com/)")
+	
 	# st.sidebar.text("Built with Streamlit")
 
 	# ----------------------------------- Page ------------------------------------#
