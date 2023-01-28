@@ -16,5 +16,6 @@ For analyzing your data, we provide two word lists (dictionaries) for incivility
 If you use the dictionaries or the app for your analysis, please cite:
 
 ```
-Stoll, A., Wilms, L., & Ziegele, M. (2023): 
+Stoll, A., Wilms, L., & Ziegele, M. (2023): Developing an Incivility Dictionary for German Online Discussions – A Semi-Automated Approach Combining Human and Artificial Knowledge. Communication Methods and Measures.
+
 ```
