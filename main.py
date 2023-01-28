@@ -142,7 +142,7 @@ def main():
 			if st.checkbox("Klick to next Step: Select a Dictionary"):
 
 				st.subheader("Step 3: Select a Dictionary")
-				dictionary = st.selectbox('select a dictionary', ["DIKI small", "DIKI large"])
+				dictionary = st.selectbox('select a dictionary', ["DIKI small", "DIKI large", "DIKI large curated"])
 				st.success("You selected {}".format(dictionary))
 
 				dic = getDictionary(dictionary)
