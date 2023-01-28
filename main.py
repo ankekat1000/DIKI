@@ -46,11 +46,11 @@ def main():
 
 	# ----------------------------------- Sidebar ------------------------------------#
 	st.sidebar.header("About")
-	st.sidebar.markdown("The DIKI Web App is a simple, web-based Tool to apply the Dictionary DIKI for Incivility Detection in German Online Discussions.")
-	st.sidebar.markdown(":green_heart: For further information, please visit DIKI on Github **Link removed for review**.")
+	st.sidebar.markdown("The DIKI Web Interface is a simple, web-based tool to apply the dictionary DIKI - Dictionary for Incivility Detection in German Online Discussions.")
+	st.sidebar.markdown(":green_heart: For further information, please visit [DIKI on Github](https://github.com/ankekat1000/DIKI).")
 
-	st.sidebar.markdown(":blue_heart: If you want to implement DIKI individually, you can download DIKI from GitHub **Link removed for review**")
-	st.sidebar.markdown(":purple_heart: We are looking foward to your questions and comments! Please leave us a message on the discussion section on GitHub **Link removed for review**.")
+	st.sidebar.markdown(":blue_heart: If you want to implement DIKI individually, you can download [DIKI from Github](https://github.com/ankekat1000/DIKI/tree/main/Dictionaries)")
+	st.sidebar.markdown(":purple_heart: We are looking foward to your questions and comments! Please post a message to the [Github discussion](https://github.com/ankekat1000/DIKI/discussions), if you have questions.")
 
 	st.sidebar.info("Maintained by ** Info removed for review**")
 	# st.sidebar.text("Built with Streamlit")
