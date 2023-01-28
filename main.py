@@ -1,6 +1,4 @@
 # App for Applying DIKI
-# Author removed for blind review
-
 # ----------------------------------- imports ------------------------------------#
 
 import streamlit as st
@@ -26,25 +24,8 @@ def getDictionary(dictionary):
 		chosen_dictionary = pd.read_csv("./Dictionaries/DIKI_small.csv", sep="\t")
 	elif dictionary == 'DIKI large':
 		chosen_dictionary = pd.read_csv("./Dictionaries/DIKI_large.csv", sep="\t")
-
-	chosen_dictionary = list(chosen_dictionary.iloc[:, 0])
-	return chosen_dictionary
-
-
-def csv_downloader(data):
-	csvfile = data.to_csv()
-	b64 = base64.b64encode(csvfile.encode()).decode()
-	new_filename = "your_data_with_DIKI_results_{}.csv".format(timestr)
-	st.markdown("#### Download File ###")
-	href = f'<a href="data:file/csv;base64,{b64}" download="{new_filename}">Click Here!!</a>'
-	st.markdown(href, unsafe_allow_html=True)
-
-
-def getDictionary(dictionary):
-	if dictionary == 'DIKI small':
-		chosen_dictionary = pd.read_csv("./Dictionaries/DIKI_small.csv", sep="\t")
-	elif dictionary == 'DIKI large':
-		chosen_dictionary = pd.read_csv("./Dictionaries/DIKI_large.csv", sep="\t")
+	elif dictionary == 'DIKI large curated':
+		chosen_dictionary = pd.read_csv("./Dictionaries/DIKI_large_curated.csv", sep="\t")	
 
 	chosen_dictionary = list(chosen_dictionary.iloc[:, 0])
 	return chosen_dictionary
@@ -81,7 +62,7 @@ def main():
 	# ---------- Data Uplaod -------------#
 	st.subheader("Upload your Data")
 	st.markdown("Klick on the button `Browse files` below to upload a data file with user comments, Tweets, etc. from your computer. " \
-		"Make sure, you upload either a comma-separated file in *.csv* or *.txt* format, or an excel file in *.xlsx* format. Your file should be encoded in *UTF-8*.")
+		"Make sure, you upload either a comma-separated file in *.csv* or *.txt* format, or an excel file in *xlsx* format. Your file should be encoded in *UTF-8*.")
 
 
 	data = st.file_uploader("If you upload a .csv or .txt-file, make sure it is actually comma-separated.",
@@ -167,7 +148,7 @@ def main():
 				if st.button("Show Dictionary Infos"):
 					st.write("The dictionary contains", len(dic), "entries.")
 					st.write("These are the first 10 entries of the dictionary", dic[:11])
-					st.markdown("If you want to see all entries of the dictionary, visit [DIKI on Github](https://github.com/unknowndeveloper42/DIKI-Source-Code-and-Web-App)")
+					st.markdown("If you want to see all entries of the dictionary, visit [DIKI on Github](https://github.com/ankekat1000/DIKI)")
 
 				else:
 					pass
@@ -225,7 +206,7 @@ def main():
 						if st.button('Save as .csv'):
 							if matches >= 1:
 								csv_downloader(df)
-								st.success("Your file has been downloaded successfully. Click on the Link above to save and open your file.")
+								st.success("Your file has been downloaded successfully.")
 							# if st.button("Yeah, good job!"):
 							#	st.balloons()
 
