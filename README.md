@@ -2,7 +2,8 @@
 
 
 
-Welcome! We are happy you want to use our **DIKI WEB APP** 💞 Click [here](https://diki-web-app.herokuapp.com/) to start right away! 
+Welcome! We are happy you want to use **DIKI** for your research 💞 
+Click [here](https://diki.limitedminds.org/) to use DIKI in the web interface right away! 
 
 ### About
 
