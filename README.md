@@ -4,8 +4,8 @@
 
 Welcome! We are happy you want to use **DIKI** for your research 💞
 
+*Paper* Please consider our paper for background information:
 
-*Paper* Please consider our paper for background information: 
 *App* Click [here](https://diki.limitedminds.org/) to use DIKI in the web interface right away! 
 
 ### About
