@@ -19,7 +19,21 @@ For analyzing your data, we provide three word lists (dictionaries) for incivili
 
 If you use the dictionaries or the app for your analysis, please cite:
 
-```
 Stoll, A., Wilms, L., & Ziegele, M. (2023). Developing an Incivility Dictionary for German Online Discussions – a Semi-Automated Approach Combining Human and Artificial Knowledge, Communication Methods and Measures. DOI: 10.1080/19312458.2023.2166028
 
+```
+@article{doi:10.1080/19312458.2023.2166028,
+author = {Anke Stoll and Lena Wilms and Marc Ziegele},
+title = {Developing an Incivility Dictionary for German Online Discussions – a Semi-Automated Approach Combining Human and Artificial Knowledge},
+journal = {Communication Methods and Measures},
+volume = {0},
+number = {0},
+pages = {1-19},
+year  = {2023},
+publisher = {Routledge},
+doi = {10.1080/19312458.2023.2166028},
+
+URL = {https://doi.org/10.1080/19312458.2023.2166028},
+eprint = {https://doi.org/10.1080/19312458.2023.2166028}
+}
 ```
