@@ -11,7 +11,7 @@ Welcome! We are happy you want to use *DIKI* for your research 💞
 
 ### About
 
-The Python-based Webapp runs in your browser (we recommend Firefox) without installing any software or packages on any operating system. The app is hosted by [Heroku](https://www.heroku.com/). 
+This repository includes the source code of our paper and of the web interface to apply DIKI. The Python-based web application runs in your browser (we recommend Firefox) without installing any software or packages on any operating system. The app is hosted by [Heroku](https://www.heroku.com/). 
 
 ### Dictionaries
 
