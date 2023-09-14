@@ -8,7 +8,10 @@ Welcome! We are happy you want to use *DIKI* for your research 💞 This reposit
 
 The app is a python web interface based on the framework [streamlit](https://docs.streamlit.io/library/get-started). It runs in your browser without installing any software on any operating system.
 With the app, you can analyze how many uncivil expressions the texts (e.g., Tweets, user comments) in your data set contain by matching them with word lists (also called dictionaries) of German-language uncivil expressions (e.g., swear words or insults). Afterwards, you can download the results to your computer. The final file will include two new columns with the number of matches and the matched words.
-Three dictionaries are provided that you can use via this web interface or download for individual use from the [GitHub repository](https://github.com/ankekat1000/DIKI). 
+Three dictionaries are provided that you can use via this web interface or download for individual use from the [GitHub repository](https://github.com/ankekat1000/DIKI).
+
+The app is hosted by [hugginface spaces](https://huggingface.co/spaces), which is a platform to host and provide machine learning demos. Read [here](https://huggingface.co/terms-of-service) for furhter information.
+
 
 ### Lincense
 
