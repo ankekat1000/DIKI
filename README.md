@@ -1,23 +1,22 @@
 # DIKI - Dictionary for Incivility Detection in German Online Discussions
 
 
+Welcome! We are happy you want to use *DIKI* for your research 💞 This repository includes both the souce code of the app and the analysis of the related paper *Developing an Incivility Dictionary for German Online Discussions – a Semi-Automated Approach Combining Human and Artificial Knowledge* ([Stoll et al., 2023](https://www.tandfonline.com/doi/full/10.1080/19312458.2023.2166028))
 
-Welcome! We are happy you want to use *DIKI* for your research 💞
 
+### About the App
 
-**Paper** Please consider our paper for background information. Click [here](https://www.tandfonline.com/doi/full/10.1080/19312458.2023.2166028?src=)
+The app is a python web interface based on the framework [streamlit](https://docs.streamlit.io/library/get-started). It runs in your browser without installing any software on any operating system.
+With the app, you can analyze how many uncivil expressions the texts (e.g., Tweets, user comments) in your data set contain by matching them with word lists (also called dictionaries) of German-language uncivil expressions (e.g., swear words or insults). Afterwards, you can download the results to your computer. The final file will include two new columns with the number of matches and the matched words.
+Three dictionaries are provided that you can use via this web interface or download for individual use from the [GitHub repository](https://github.com/ankekat1000/DIKI). 
 
-**App** Click [here](https://diki.limitedminds.org/) to use DIKI in the web interface right away! 
+### Lincense
 
-### About
+The app and all souce code in this repository is provided under the Creative Common License *CC BY-NC-SA 4.0* (Attribution-NonCommercial-ShareAlike 4.0 International). Hence, you are free to share and adapt the material in any medium or format for non-commercial purposes and with giving appropriate credit to the authors. Read [here](https://creativecommons.org/licenses/by-nc-sa/4.0/) for further details.
 
-This repository includes the source code of our paper and of the web interface to apply DIKI. The Python-based web application runs in your browser (we recommend Firefox) without installing any software or packages on any operating system. The app is hosted by [Heroku](https://www.heroku.com/). 
+### Paper
 
-### Dictionaries
-
-For analyzing your data, we provide three word lists (dictionaries) for incivility in German-language online discussions. You can use DIKI individually or in the web interface. Just upload a file with user comments or related text documents, chose the instrument to find uncivil entries in your data. The final file will include two new columns with the number of matches and the matched words.
-
-If you use the dictionaries or the app for your analysis, please cite:
+Please consider our [paper](https://www.tandfonline.com/doi/full/10.1080/19312458.2023.2166028?src=) for background information. If you use the dictionaries or the app for your analysis, please cite:
 
 Stoll, A., Wilms, L., & Ziegele, M. (2023). Developing an Incivility Dictionary for German Online Discussions – a Semi-Automated Approach Combining Human and Artificial Knowledge, Communication Methods and Measures. DOI: 10.1080/19312458.2023.2166028
 
@@ -37,3 +36,4 @@ URL = {https://doi.org/10.1080/19312458.2023.2166028},
 eprint = {https://doi.org/10.1080/19312458.2023.2166028}
 }
 ```
+
