@@ -1,13 +1,8 @@
 ---
 title: DIKI - German Incivility Dictionary for Communication Researchers
-emoji: 💕
-colorFrom: blue
-colorTo: pink
-sdk: streamlit
 sdk_version: 0.82.0
 app_file: main.py
 license : cc-by-nc-sa-4.0
-pinned: false
 ---
 
 # DIKI - Dictionary for Incivility Detection in German Online Discussions
