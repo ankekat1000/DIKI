@@ -6,7 +6,7 @@ Welcome! We are happy you want to use *DIKI* for your research 💞 Click [here]
 
 ### About
 
-This is a python web application based on the framework [streamlit](https://docs.streamlit.io/library/get-started). It runs in your browser without installing any software on any operating system. The app is deployed by the [Streamlit Community Cloud](https://share.streamlit.io/](https://docs.streamlit.io/streamlit-community-cloud).
+This is a python web application based on the framework [streamlit](https://docs.streamlit.io/library/get-started). It runs in your browser without installing any software on any operating system. The app is deployed by the [Streamlit Community Cloud](https://docs.streamlit.io/streamlit-community-cloud).
 
 
 In this app, you can analyze how many uncivil expressions the texts (e.g., Tweets, user comments) in your data set contain by matching them with word lists (also called dictionaries) of German-language uncivil expressions (e.g., swear words or insults). Afterwards, you can download the results to your computer. The final file will include two new columns with the number of matches and the matched words.
